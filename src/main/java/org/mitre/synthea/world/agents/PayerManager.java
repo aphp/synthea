@@ -264,16 +264,16 @@ public class PayerManager {
     BigDecimal defaultCopay = new BigDecimal(line.remove(COPAY).trim());
     BigDecimal monthlyPremium = new BigDecimal(line.remove(MONTHLY_PREMIUM).trim());
     boolean medicareSupplement = Boolean.parseBoolean(line.remove(MEDICARE_SUPPLEMENT).trim());
-    boolean isACA = Boolean.parseBoolean(line.remove(ACA).trim());
-    boolean incomeBasedPremium = Boolean.parseBoolean(line.remove(INCOME_BASED_PREMIUM).trim());
+    boolean isACA = true; // Boolean.parseBoolean(line.remove(ACA).trim());
+    boolean incomeBasedPremium = false ; //Boolean.parseBoolean(line.remove(INCOME_BASED_PREMIUM).trim());
     String yearStartStr = line.remove(START_YEAR).trim();
     int yearStart = yearStartStr.equals("") ? 0 : Integer.parseInt(yearStartStr);
     String yearEndStr = line.remove(END_YEAR).trim();
     int yearEnd = StringUtils.isBlank(yearEndStr)
         ? Integer.MAX_VALUE : Integer.parseInt(yearEndStr);
-    BigDecimal maxOutOfPocket = new BigDecimal(line.remove(MAX_OOP).trim());
+    BigDecimal maxOutOfPocket = new BigDecimal(Integer.MAX_VALUE); //new BigDecimal(line.remove(MAX_OOP).trim());
     // If the priority is blank, give it minimum priority (maximum int value).
-    String priorityString = line.remove(PRIORITY_LEVEL).trim();
+    String priorityString = "" ; //line.remove(PRIORITY_LEVEL).trim();
     int priority = StringUtils.isBlank(priorityString)
         ? Integer.MAX_VALUE : Integer.parseInt(priorityString);
     String eligibilityName = line.remove(ELIGIBILITY_POLICY);
